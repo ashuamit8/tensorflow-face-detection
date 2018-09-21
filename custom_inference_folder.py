@@ -18,6 +18,9 @@ PATH_TO_CKPT = './model/frozen_inference_graph_face.pb'
 # List of the strings that is used to add correct label for each box.
 PATH_TO_LABELS = './protos/face_label_map.pbtxt'
 
+image_path = '/home/ashuamit/Groomefy/machine-learning/projects/tensorflow-face-detection/media/images/'
+output_path = '/home/ashuamit/Groomefy/machine-learning/projects/tensorflow-face-detection/media/output_images/'
+
 NUM_CLASSES = 2
 
 label_map = label_map_util.load_labelmap(PATH_TO_LABELS)
@@ -92,7 +95,14 @@ if __name__ == "__main__":
 
     cap = cv2.VideoCapture(camID)
     windowNotSet = True
-    while True:
+    # while True:
+    for filename in os.listdir(directory):
+        if filename.endswith(".jpg") or filename.endswith(".jpeg") filename.endswith(".JPG") or filename.endswith(".JPEG"): 
+            continue
+        else:
+            continue
+        # print(os.path.join(directory, filename))
+
         ret, image = cap.read()
         if ret == 0:
             break
