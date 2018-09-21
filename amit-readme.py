@@ -1,3 +1,3 @@
-python exps/get_results.py \
---model snapshots/DETDLIB/checkpoint/cpm_vgg16-epoch-049-050.pth \
---image_path val200/ --save cache_data/cache/200/
+#for inferencing folder images and save them to other folder with filter fields
+#according to bounding box percentage>3% and single face detected
+python custom_inference_folder.py
