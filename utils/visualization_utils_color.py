@@ -373,6 +373,7 @@ def visualize_boxes_and_labels_on_image_array(image,
   for i in range(min(max_boxes_to_draw, boxes.shape[0])):
     if scores is None or scores[i] > min_score_thresh:
       box = tuple(boxes[i].tolist())
+      # print("boxes===>>> ",len(boxes[i]),i)
       if instance_masks is not None:
         box_to_instance_masks_map[box] = instance_masks[i]
       if keypoints is not None:
