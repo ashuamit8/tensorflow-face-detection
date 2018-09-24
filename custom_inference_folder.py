@@ -19,8 +19,8 @@ PATH_TO_CKPT = './model/frozen_inference_graph_face.pb'
 # List of the strings that is used to add correct label for each box.
 PATH_TO_LABELS = './protos/face_label_map.pbtxt'
 
-images_path = '/home/ashuamit/Groomefy/machine-learning/projects/tensorflow-face-detection/media/images/'
-output_path = '/home/ashuamit/Groomefy/machine-learning/projects/tensorflow-face-detection/media/output_images/'
+images_path = './media/x/'
+output_path = './media/x_output/'
 
 NUM_CLASSES = 2
 
