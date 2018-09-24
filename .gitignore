@@ -109,3 +109,5 @@ ENV/
 *.jpeg
 *.png
 
+#media folder
+media/*
