@@ -3,4 +3,4 @@
 
 python custom_inference_folder.py
 
-#checking account used personal or offc --again 
+#checking account used personal or offc --again xx
