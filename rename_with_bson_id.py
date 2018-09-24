@@ -10,7 +10,7 @@ import fnmatch
 import os
 
 FOLDER_PATH = "./media/images/"
-OUTPUT_HIGH = "./media/high_resolution/"
+OUTPUT_HIGH = "./media/images_high_resolution/"
 
 if not os.path.exists(OUTPUT_HIGH):
     os.makedirs(OUTPUT_HIGH)

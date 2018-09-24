@@ -22,6 +22,9 @@ PATH_TO_LABELS = './protos/face_label_map.pbtxt'
 images_path = './media/x/'
 output_path = './media/x_output/'
 
+if not os.path.exists(output_path):
+    os.makedirs(output_path)
+
 NUM_CLASSES = 2
 
 label_map = label_map_util.load_labelmap(PATH_TO_LABELS)
@@ -158,7 +161,7 @@ if __name__ == "__main__":
 
                 percentage_bb=(area_bb/(area_full[0]*1.0))*100
                 print("percentage_bb------->>",percentage_bb,box_height,box_width,area_bb,area_full[0])
-                if percentage_bb>3:
+                if percentage_bb>4:
                     cv2.imwrite(output_path+filename,image)
 
             # # len(boxes[i]),i
