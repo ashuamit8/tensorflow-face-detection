@@ -2,3 +2,5 @@
 #according to bounding box percentage>3% and single face detected
 
 python custom_inference_folder.py
+
+#checking account used personal or offc
