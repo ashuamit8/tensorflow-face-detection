@@ -162,7 +162,10 @@ if __name__ == "__main__":
                 percentage_bb=(area_bb/(area_full[0]*1.0))*100
                 print("percentage_bb------->>",percentage_bb,box_height,box_width,area_bb,area_full[0])
                 if percentage_bb>4:
-                    cv2.imwrite(output_path+filename,image)
+                    # cv2.imwrite(output_path+filename,image)
+
+                    if os.path.exists(images_path+filename):
+                        os.rename(images_path+filename,output_path+filename,image)
 
             # # len(boxes[i]),i
             # vis_util.visualize_boxes_and_labels_on_image_array(
