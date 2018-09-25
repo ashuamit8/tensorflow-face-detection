@@ -22,6 +22,9 @@ PATH_TO_LABELS = './protos/face_label_map.pbtxt'
 images_path = './media/x/'
 output_path = './media/x_output/'
 
+images_path = '/samba/anonymous2/rohit/new_to_merged/Insta20Sept18/all_hr/'
+output_path = '/samba/anonymous2/rohit/new_to_merged/Insta20Sept18/filtered_data/'
+
 if not os.path.exists(output_path):
     os.makedirs(output_path)
 
@@ -165,7 +168,7 @@ if __name__ == "__main__":
                     # cv2.imwrite(output_path+filename,image)
 
                     if os.path.exists(images_path+filename):
-                        os.rename(images_path+filename,output_path+filename,image)
+                        os.rename(images_path+filename,output_path+filename)
 
             # # len(boxes[i]),i
             # vis_util.visualize_boxes_and_labels_on_image_array(
