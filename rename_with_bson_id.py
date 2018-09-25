@@ -26,7 +26,7 @@ for root, dirnames, filenames in os.walk(FOLDER_PATH):
     for filename in fnmatch.filter(filenames, '*.jpg'):
         total_count = total_count + 1;
         # print(total_count)
-        print("filename >>>>>>>: ",filename)
+        print("filename >>>>>>>: ",total_count,"---",filename)
         if not os.path.exists(FOLDER_PATH + filename):
             print("continue -------------------------------")
             continue
