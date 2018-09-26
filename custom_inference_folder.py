@@ -19,15 +19,6 @@ PATH_TO_CKPT = './model/frozen_inference_graph_face.pb'
 # List of the strings that is used to add correct label for each box.
 PATH_TO_LABELS = './protos/face_label_map.pbtxt'
 
-images_path = './media/x/'
-output_path = './media/x_output/'
-
-images_path = '/samba/anonymous2/rohit/new_to_merged/Insta20Sept18/all_hr/'
-output_path = '/samba/anonymous2/rohit/new_to_merged/Insta20Sept18/filtered_data/'
-
-if not os.path.exists(output_path):
-    os.makedirs(output_path)
-
 NUM_CLASSES = 2
 
 label_map = label_map_util.load_labelmap(PATH_TO_LABELS)
@@ -102,100 +93,137 @@ if __name__ == "__main__":
 
     # cap = cv2.VideoCapture(camID)
 
-    windowNotSet = True
-    # while True:
-    for filename in os.listdir(images_path):
-        print(filename)
-        if filename.endswith(".jpg") or filename.endswith(".jpeg") or filename.endswith(".JPG") or filename.endswith(".JPEG"):
+    # images_path = './media/x/'
+    # output_path = './media/x_output/'
+    # filtered_data
 
-            # continue
-            # ret, image = cap.read()
-            # if ret == 0:
-            #     break
-            # image = Image.open(images_path+filename)
-            image = cv2.imread(images_path+filename)
-            # print("image.shape====",image.shape)
-            [h, w] = image.shape[:2]
-            # print (h, w)
-            image = cv2.flip(image, 1)
+    images_path = '/samba/anonymous2/rohit/new_to_merged/Insta20Sept18/all_hr/'
+    output_path = '/samba/anonymous2/rohit/new_to_merged/Insta20Sept18/x/'
 
-            (boxes, scores, classes, num_detections) = tDetector.run(image)
-            boxes=np.squeeze(boxes)
-            scores=np.squeeze(scores)
-            j=0
-            for i in range(min(2, boxes.shape[0])):
-
-                if scores is None or scores[i] > 0.7:
-                    if i==0:
-                        box = tuple(boxes[i].tolist())
-                    j=j+1;
-                    # print("boxes =====",len(boxes[i]),i,box,j)
-
-            if j==1:
-                # draw = ImageDraw.Draw(image)
-                im_width, im_height = [w, h]
-                use_normalized_coordinates=True
-
-                ymin=box[0],
-                xmin=box[1],
-                ymax=box[2],
-                xmax=box[3],
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
 
 
-                # print("ymin================",ymin[0],ymin[0]*1080)
+    # print(output_path)
 
-                if use_normalized_coordinates:
-                    # print("use_normalized_coordinates:True===")
-                    # print(xmin,im_width, xmax,im_width,ymin, im_height, ymax,im_height)
-                    (left, right, top, bottom) = (xmin[0] * im_width, xmax[0] * im_width,
-                    ymin[0] * im_height, ymax[0] * im_height)
-                    # print("points left, right, top, bottom ====>>> : ",left, right, top, bottom)
+    n_folders = 205 # n+1 [2,3]
+    folder_count=0;
+    for i in range(167,n_folders):
+        folder_count=folder_count+1
+        current_folder=i
+        #reset FOLDER_PATHS
+        images_path = '/samba/anonymous2/rohit/new_to_merged/Insta20Sept18/all_hr/'
+        output_path = '/samba/anonymous2/rohit/new_to_merged/Insta20Sept18/x/'
 
-                    box_width=right-left
-                    box_height=bottom-top
-                    # print("box_width,box_height====>>> : ",box_width,box_height)
-
-                else:
-                    (left, right, top, bottom) = (xmin, xmax, ymin, ymax)
-
-                area_full=im_height*im_width,
-                area_bb=(box_height*box_width)
-                # print("*****************--->>",area_bb,area_full[0])
-
-                percentage_bb=(area_bb/(area_full[0]*1.0))*100
-                print("percentage_bb------->>",percentage_bb,box_height,box_width,area_bb,area_full[0])
-                if percentage_bb>4:
-                    # cv2.imwrite(output_path+filename,image)
-
-                    if os.path.exists(images_path+filename):
-                        os.rename(images_path+filename,output_path+filename)
-
-            # # len(boxes[i]),i
-            # vis_util.visualize_boxes_and_labels_on_image_array(
-            # image,
-            # np.squeeze(boxes),
-            # np.squeeze(classes).astype(np.int32),
-            # np.squeeze(scores),
-            # category_index,
-            # use_normalized_coordinates=True,
-            # line_thickness=4)
-
-            # if windowNotSet is True:
-            #     cv2.namedWindow("tensorflow based (%d, %d)" % (w, h), cv2.WINDOW_NORMAL)
-            #     windowNotSet = False
-
-            # cv2.imshow("tensorflow based (%d, %d)" % (w, h), image)
-
-            #filter if bb equal exactly one.
-            # if len(boxes)>=1:
+        print("FOLDER=====================================>>>>>>",i)
+        images_path=images_path+'{0:03}'.format(i)+'/'
+        output_path=output_path+'{0:03}'.format(i)+'/'
+        if not os.path.exists(output_path):
+            os.makedirs(output_path)
 
 
-            k = cv2.waitKey(1) & 0xff
-            if k == ord('q') or k == 27:
-                break
-        else:
-            continue
-        # print(os.path.join(images_path, filename))
+        # print("images_path===",images_path)
+
+
+
+
+        windowNotSet = True
+        total_count=0;
+        # while True:
+        for filename in os.listdir(images_path):
+            total_count=total_count+1
+            print("current_folder:",current_folder,"    ","folder_count:",folder_count,"    ",total_count,"   ",filename)
+            if filename.endswith(".jpg") or filename.endswith(".jpeg") or filename.endswith(".JPG") or filename.endswith(".JPEG"):
+
+                # continue
+                # ret, image = cap.read()
+                # if ret == 0:
+                #     break
+                # image = Image.open(images_path+filename)
+                # print("images_path+filename====",images_path+filename)
+                image = cv2.imread(images_path+filename)
+                # print("image.shape====",image.shape)
+                [h, w] = image.shape[:2]
+                # print (h, w)
+                image = cv2.flip(image, 1)
+
+                (boxes, scores, classes, num_detections) = tDetector.run(image)
+                boxes=np.squeeze(boxes)
+                scores=np.squeeze(scores)
+                j=0
+                for i in range(min(2, boxes.shape[0])):
+
+                    if scores is None or scores[i] > 0.7:
+                        if i==0:
+                            box = tuple(boxes[i].tolist())
+                        j=j+1;
+                        # print("boxes =====",len(boxes[i]),i,box,j)
+
+                if j==1:
+                    # draw = ImageDraw.Draw(image)
+                    im_width, im_height = [w, h]
+                    use_normalized_coordinates=True
+
+                    ymin=box[0],
+                    xmin=box[1],
+                    ymax=box[2],
+                    xmax=box[3],
+
+
+                    # print("ymin================",ymin[0],ymin[0]*1080)
+
+                    if use_normalized_coordinates:
+                        # print("use_normalized_coordinates:True===")
+                        # print(xmin,im_width, xmax,im_width,ymin, im_height, ymax,im_height)
+                        (left, right, top, bottom) = (xmin[0] * im_width, xmax[0] * im_width,
+                        ymin[0] * im_height, ymax[0] * im_height)
+                        # print("points left, right, top, bottom ====>>> : ",left, right, top, bottom)
+
+                        box_width=right-left
+                        box_height=bottom-top
+                        # print("box_width,box_height====>>> : ",box_width,box_height)
+
+                    else:
+                        (left, right, top, bottom) = (xmin, xmax, ymin, ymax)
+
+                    area_full=im_height*im_width,
+                    area_bb=(box_height*box_width)
+                    # print("*****************--->>",area_bb,area_full[0])
+
+                    percentage_bb=(area_bb/(area_full[0]*1.0))*100
+                    # print("percentage_bb------->>",percentage_bb,box_height,box_width,area_bb,area_full[0])
+                    if percentage_bb>4:
+                        # cv2.imwrite(output_path+filename,image)
+
+                        if os.path.exists(images_path+filename):
+                            os.rename(images_path+filename,output_path+filename)
+
+                # # len(boxes[i]),i
+                # vis_util.visualize_boxes_and_labels_on_image_array(
+                # image,
+                # np.squeeze(boxes),
+                # np.squeeze(classes).astype(np.int32),
+                # np.squeeze(scores),
+                # category_index,
+                # use_normalized_coordinates=True,
+                # line_thickness=4)
+
+                # if windowNotSet is True:
+                #     cv2.namedWindow("tensorflow based (%d, %d)" % (w, h), cv2.WINDOW_NORMAL)
+                #     windowNotSet = False
+
+                # cv2.imshow("tensorflow based (%d, %d)" % (w, h), image)
+
+                #filter if bb equal exactly one.
+                # if len(boxes)>=1:
+
+
+                k = cv2.waitKey(1) & 0xff
+                if k == ord('q') or k == 27:
+                    break
+            else:
+                continue
+            # print(os.path.join(images_path, filename))
 
     print("game over ==== >>>")
 
