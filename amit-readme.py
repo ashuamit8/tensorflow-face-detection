@@ -8,6 +8,7 @@ python custom_inference_folder.py
 # git config --global user.name "ashuamit"
 # git config --global user.email "ashuamit786@gmail.com"
 # git config user.email "ashuamit786@gmail.com"
+# git config user.name "ashuamit"
 
 
 #scripts purposes.

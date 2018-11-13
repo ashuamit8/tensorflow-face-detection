@@ -192,7 +192,7 @@ if __name__ == "__main__":
 
                     percentage_bb=(area_bb/(area_full[0]*1.0))*100
                     # print("percentage_bb------->>",percentage_bb,box_height,box_width,area_bb,area_full[0])
-                    if percentage_bb>4:
+                    if percentage_bb>5:
                         # cv2.imwrite(output_path+filename,image)
 
                         if os.path.exists(images_path+filename):
