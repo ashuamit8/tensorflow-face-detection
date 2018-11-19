@@ -16,6 +16,6 @@ rename_with_bson_id.py : '''used to rename raw images name to bson id's and
  copy high resolution(1024x1024) images to other folder.'''
 
 custom_inference_folder.py :'''moving all images having exactly 1-face and
-having percentage bounding box with full images more than 3%'''
+having percentage bounding box with full images more than 5%'''
 
 opencv_fd.py: '''detecting face in VideoCapture using opencv'''

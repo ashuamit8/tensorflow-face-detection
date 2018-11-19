@@ -100,6 +100,9 @@ if __name__ == "__main__":
     images_path = '/samba/anonymous2/rohit/new_to_merged/Insta20Sept18/all_hr/'
     output_path = '/samba/anonymous2/rohit/new_to_merged/Insta20Sept18/x/'
 
+    const_images_path = images_path
+    const_output_path = output_path
+
     if not os.path.exists(output_path):
         os.makedirs(output_path)
 
@@ -112,8 +115,10 @@ if __name__ == "__main__":
         folder_count=folder_count+1
         current_folder=i
         #reset FOLDER_PATHS
-        images_path = '/samba/anonymous2/rohit/new_to_merged/Insta20Sept18/all_hr/'
-        output_path = '/samba/anonymous2/rohit/new_to_merged/Insta20Sept18/x/'
+        # images_path = '/samba/anonymous2/rohit/new_to_merged/Insta20Sept18/all_hr/'
+        # output_path = '/samba/anonymous2/rohit/new_to_merged/Insta20Sept18/x/'
+        images_path = const_images_path
+        output_path = const_output_path
 
         print("FOLDER=====================================>>>>>>",i)
         images_path=images_path+'{0:03}'.format(i)+'/'

@@ -9,11 +9,23 @@ from PIL import Image
 import fnmatch
 import os
 
+# python rename_with_bson_id.py
+
 # FOLDER_PATH = "./media/images/"
 # OUTPUT_HIGH = "./media/images_high_resolution/"
 
-FOLDER_PATH = '/samba/anonymous2/rohit/new_to_merged/Insta20Sept18/all/'
-OUTPUT_HIGH = '/samba/anonymous2/rohit/new_to_merged/Insta20Sept18/all_hr/'
+# FOLDER_PATH = '/samba/anonymous2/rohit/new_to_merged/Insta10Nov18/1/'
+# FOLDER_PATH = '/samba/anonymous2/rohit/new_to_merged/Insta10Nov18/2/'
+# FOLDER_PATH = '/samba/anonymous2/rohit/new_to_merged/Insta10Nov18/3/'
+# FOLDER_PATH = '/samba/anonymous2/rohit/new_to_merged/Insta10Nov18/4/'
+# FOLDER_PATH = '/samba/anonymous2/rohit/new_to_merged/Insta10Nov18/5/'
+# FOLDER_PATH = '/samba/anonymous2/rohit/new_to_merged/Insta10Nov18/6/'
+# FOLDER_PATH = '/samba/anonymous2/rohit/new_to_merged/Insta10Nov18/7/'
+# FOLDER_PATH = '/samba/anonymous2/rohit/new_to_merged/Insta10Nov18/8/'
+FOLDER_PATH = '/samba/anonymous2/rohit/new_to_merged/Insta10Nov18/9/'
+
+OUTPUT_HIGH = '/samba/anonymous2/rohit/new_to_merged/Insta10Nov18/all_hr/'
+
 
 if not os.path.exists(OUTPUT_HIGH):
     os.makedirs(OUTPUT_HIGH)
